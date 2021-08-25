@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flow id="652faa4f-7ce5-4311-b25b-f5f19e397ebe">
-  <descriptionCdata><![CDATA[652faa4f-7ce5-4311-b25b-f5f19e397ebe.52f7eec6-5c7f-43c4-89f0-b90f18aa95b1.description=Launcher flow. Async.\n\nInputs\: \n* path to flow\n* count - how many times to launch the flow (optional, default 5)\n
+  <descriptionCdata><![CDATA[652faa4f-7ce5-4311-b25b-f5f19e397ebe.52f7eec6-5c7f-43c4-89f0-b90f18aa95b1.description=Launcher flow. Async.\n\nInputs\: \n* path to flow (change this)\n* count - how many times to launch the flow (optional, default 5)\n
 652faa4f-7ce5-4311-b25b-f5f19e397ebe.description=Flow to lunch many concurrent flows to test the semaphore.
 ]]></descriptionCdata>
   <annotation>652faa4f-7ce5-4311-b25b-f5f19e397ebe.description</annotation>
