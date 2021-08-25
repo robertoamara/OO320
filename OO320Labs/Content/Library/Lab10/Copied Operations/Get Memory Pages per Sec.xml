@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation id="6883d8f4-484d-4172-ae76-360fc9b9b90e">
+  <descriptionCdata><![CDATA[6883d8f4-484d-4172-ae76-360fc9b9b90e.2743bd0a-860a-4567-bd6a-c11d82537186.prompt=Alternate Credentials - Password\:
+6883d8f4-484d-4172-ae76-360fc9b9b90e.description=<pre>\nRetrieves the requested Windows Performance Counter Value.  Takes 5 samples in 1 second intervals and returns the average.\n\nInput Parameters\:\nhost - Hostname or ip address of the target machine.\nobject - The counter object (ex. Processor).\ncounter - The counter's name (ex. % Processor Time).\ninstance - The instance of the counter (if applicable) (ex. _Total).\nuser - Username to use for thread impersonation on the RAS host for this operation (can be left blank).\npassword - Password of the user.\n\nResponses\:\nsuccess - Retrieved the counter successfully.\nfailure - Failed to retrieve the counter.\n\nExtra Results\:\nVALUE - The actual value captured.\n\nNotes\:\nThis operation checks the value of a performance counter that must be running on the target windows host prior to flow execution\:\nPerformance Object\: memory\nPerformance Counter\: pages/sec\nThis performance counter can be enabled using PerfMon.exe on the target host.\n</pre>
+6883d8f4-484d-4172-ae76-360fc9b9b90e.e479c243-8822-45f1-8834-54d45421a6a0.prompt=HostName\:
+6883d8f4-484d-4172-ae76-360fc9b9b90e.f14afd40-6773-431b-924a-fe2cd146df9b.prompt=Alternate Credentials - UserName\:
+]]></descriptionCdata>
+  <annotation>6883d8f4-484d-4172-ae76-360fc9b9b90e.description</annotation>
+  <name>Get Memory Pages per Sec</name>
+  <categories/>
+  <inputs>
+    <userInputBinding id="e479c243-8822-45f1-8834-54d45421a6a0">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>host</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>6883d8f4-484d-4172-ae76-360fc9b9b90e.e479c243-8822-45f1-8834-54d45421a6a0.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <staticBinding id="9cfe895c-e617-4878-ae2f-848f4a7d5764">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>object</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>memory</value>
+      <record>false</record>
+    </staticBinding>
+    <staticBinding id="9beb912d-55f8-4ab4-b5a2-85acbf1320a5">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>counter</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>pages/sec</value>
+      <record>false</record>
+    </staticBinding>
+    <staticBinding id="3982693f-9caa-4645-85ad-a2ca4dd52ea4">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>instance</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value></value>
+      <record>false</record>
+    </staticBinding>
+    <userInputBinding id="f14afd40-6773-431b-924a-fe2cd146df9b">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>user</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>6883d8f4-484d-4172-ae76-360fc9b9b90e.f14afd40-6773-431b-924a-fe2cd146df9b.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="2743bd0a-860a-4567-bd6a-c11d82537186">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>ENCRYPTED</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>password</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>6883d8f4-484d-4172-ae76-360fc9b9b90e.2743bd0a-860a-4567-bd6a-c11d82537186.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+  </inputs>
+  <scriptlet id="fc7cd3c4-6e78-4386-80dc-8cb11a59c56e">
+    <annotation></annotation>
+    <name>Operation Get Memory Pages per Sec (248880c7-6bf6-42fa-ac61-ac728b073a43)</name>
+    <script>
+        	scriptletContext.put(&quot;VALUE&quot;, scriptletRawResult[&apos;VALUE&apos;]);
+        </script>
+    <type>RHINO</type>
+  </scriptlet>
+  <possibleResponses>
+    <opResponse id="be79fdc6-02f1-449d-93af-debf95947ef4">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>true</isDefault>
+      <onFailure>true</onFailure>
+      <type>ERROR</type>
+      <matchRules>
+        <expression id="6a01b696-2412-4bc7-a765-fdf645e7fc0d">
+          <annotation></annotation>
+          <name></name>
+          <fieldName>returnCode</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <containsEvaluator id="3ef27797-6754-46d0-b5c6-6ccc6c41efdf">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>1</text>
+            <ignoreCase>true</ignoreCase>
+            <matchType>EXACT_MATCH</matchType>
+          </containsEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="7ce89054-645c-4515-a8a2-88204633a9ae">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules>
+        <expression id="99e486c9-2d9c-4402-8a51-c5955398b685">
+          <annotation></annotation>
+          <name></name>
+          <fieldName>returnCode</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <containsEvaluator id="9bfba9bb-3988-450b-9eeb-e8975ec93336">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>0</text>
+            <ignoreCase>true</ignoreCase>
+            <matchType>EXACT_MATCH</matchType>
+          </containsEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="31a1902f-b328-4471-84af-cf46709ba74d">
+    <annotation></annotation>
+    <name></name>
+    <fieldName>VALUE</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="733011bc-20b8-46be-81a1-ba527bdf7366">
+    <baseIcon>document_pulse.png</baseIcon>
+    <basePath>Operating System/</basePath>
+    <readOnly>false</readOnly>
+    <layers>
+      <iconSpec id="706e44dc-1d36-4866-8b0e-d8e44c99ea29">
+        <baseIcon>memory.png</baseIcon>
+        <basePath>Operating System/</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+      <iconSpec id="46959d17-7f6d-45ff-a986-241a5d83e402">
+        <baseIcon>refresh.png</baseIcon>
+        <basePath>Annotations/</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+    </layers>
+  </iconSpec>
+  <opRef>
+    <refId>c8b71c18-002d-4776-805e-cc873ef0b38e</refId>
+  </opRef>
+  <fieldValues/>
+  <groupAliasRef>
+    <refId>5233030c-af46-432b-a682-b326ca6bf2ae</refId>
+    <refName>RAS_Operator_Path</refName>
+  </groupAliasRef>
+  <overrideGroupAlias>${overrideNRAS}</overrideGroupAlias>
+</operation>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation id="49b30f14-3543-4c56-b44e-92707f6f92be">
+  <descriptionCdata><![CDATA[49b30f14-3543-4c56-b44e-92707f6f92be.011adbfd-9cbf-498b-896e-e542b2a4b274.prompt=Input WMI query\:
+49b30f14-3543-4c56-b44e-92707f6f92be.34a0ad99-ccd9-4a8a-abbd-0d9192549333.prompt=Input username\:
+49b30f14-3543-4c56-b44e-92707f6f92be.7d90b3ff-4f51-4769-9b1b-5af325c3dd53.prompt=Input password\:
+49b30f14-3543-4c56-b44e-92707f6f92be.83aac1b8-08a3-4699-b15a-c55ed28e441c.prompt=Input namespace (default root\\cimv2)\:
+49b30f14-3543-4c56-b44e-92707f6f92be.description=<pre>\nRuns a query against WMI and returns all the properties in XML format.\n\nNOTE\: use WMIQueryFormat on the returned XML to convert to some other format.\n\nInputs\:\n    host - Host name or ip address of the system on which the WMI query will be run.\n    username - Username to use for WMI impersonation on the host for this operation (can be left blank).\n    password - Password of the user.\n    namespace - Namespace to run query against. If not provided, the root\\cimv2 namespace is used by default.\n    query - The query to execute (e.g. select * from win32_service).\n    pktPrivacy - Setting this to 'true' will change the wmi authentication level to 'packet privacy' (authenticates all previous impersonation levels and encrypts the argument value of each remote procedure call. Use this setting if the namespace to which you are connecting requires an encrypted connection). If 'false' it will default to  'packet level' authentication (authenticates that all data received is from the expected client.)\nValues\: true, false\nDefault\: false\n\nResponses\:\nsuccess - The query returned successfully.\nfailure - Unable to execute query.\n</pre>
+49b30f14-3543-4c56-b44e-92707f6f92be.eb76b10a-fb1c-4d8c-a49a-e857971c834e.prompt=Input host\:
+]]></descriptionCdata>
+  <annotation>49b30f14-3543-4c56-b44e-92707f6f92be.description</annotation>
+  <name>WMI Query</name>
+  <categories/>
+  <inputs>
+    <userInputBinding id="eb76b10a-fb1c-4d8c-a49a-e857971c834e">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>host</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>49b30f14-3543-4c56-b44e-92707f6f92be.eb76b10a-fb1c-4d8c-a49a-e857971c834e.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="34a0ad99-ccd9-4a8a-abbd-0d9192549333">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>username</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>49b30f14-3543-4c56-b44e-92707f6f92be.34a0ad99-ccd9-4a8a-abbd-0d9192549333.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="7d90b3ff-4f51-4769-9b1b-5af325c3dd53">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>ENCRYPTED</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>password</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>49b30f14-3543-4c56-b44e-92707f6f92be.7d90b3ff-4f51-4769-9b1b-5af325c3dd53.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="83aac1b8-08a3-4699-b15a-c55ed28e441c">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>namespace</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>49b30f14-3543-4c56-b44e-92707f6f92be.83aac1b8-08a3-4699-b15a-c55ed28e441c.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="011adbfd-9cbf-498b-896e-e542b2a4b274">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>query</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>49b30f14-3543-4c56-b44e-92707f6f92be.011adbfd-9cbf-498b-896e-e542b2a4b274.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="cd90c3b7-95d9-4672-b7c9-2d78d8a6453a">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>pktPrivacy</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="21a2ce5b-e7cf-46fa-84c4-1c621a5f221f">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules>
+        <expression id="3517da09-c4aa-4b44-81ad-21e8ea0612d1">
+          <annotation></annotation>
+          <name></name>
+          <fieldName>returnCode</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <containsEvaluator id="211ac48f-425e-4590-a2af-9588ea614a55">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>0</text>
+            <ignoreCase>true</ignoreCase>
+            <matchType>EXACT_MATCH</matchType>
+          </containsEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="a2b910cf-babb-41a0-888a-14264692089c">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>ERROR</type>
+      <matchRules>
+        <expression id="029ffd9d-8e23-406f-b92e-2445e6b5204f">
+          <annotation></annotation>
+          <name></name>
+          <fieldName>returnCode</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <containsEvaluator id="258e5086-15f1-403f-bbbf-2c115de8d024">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>1</text>
+            <ignoreCase>true</ignoreCase>
+            <matchType>EXACT_MATCH</matchType>
+          </containsEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="405dd536-f66d-4a7e-bd4e-dcd27339357b">
+    <annotation></annotation>
+    <name></name>
+    <fieldName>returnResult</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="8b72e04c-e556-4112-bfd8-65ceddacd03d">
+    <baseIcon>windows_server.png</baseIcon>
+    <basePath>Servers/</basePath>
+    <readOnly>false</readOnly>
+    <layers>
+      <iconSpec id="474a7e42-4424-42ee-bf54-0885342a5c2e">
+        <baseIcon>view.png</baseIcon>
+        <basePath>Annotations/</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+    </layers>
+  </iconSpec>
+  <opRef>
+    <refId>db1c9e03-65fb-44a8-a5ae-4ab1fe64236b</refId>
+  </opRef>
+  <fieldValues/>
+  <groupAliasRef>
+    <refId>5233030c-af46-432b-a682-b326ca6bf2ae</refId>
+    <refName>RAS_Operator_Path</refName>
+  </groupAliasRef>
+  <overrideGroupAlias>${overrideNRAS}</overrideGroupAlias>
+</operation>

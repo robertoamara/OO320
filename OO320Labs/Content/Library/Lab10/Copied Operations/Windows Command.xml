@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation id="a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6">
+  <descriptionCdata><![CDATA[a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.1087740f-42bb-4483-82d4-2d26a54d2fe8.prompt=Directory to start in\:
+a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.390663c2-0888-4b2f-b91d-55cf18a271ee.prompt=Timeout (seconds)\:
+a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.59d6a350-bd2b-4d59-b504-e811ad5dd169.prompt=Command\:
+a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.7b42898b-d354-4e74-b245-9e39bca499b4.prompt=Alternate Credentials - Password\:
+a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.87e6c95e-62a4-4fb0-98d0-9de4ec6c4a5e.prompt=Output path\:
+a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.a669a593-eeae-4658-8042-54757e71d8c7.prompt=HostName\:
+a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.description=<pre>\nThis operation uses WMI to attempt to create a remote process on target machine and run the command. \n\nInputs\:\n    host - Hostname or ip address of the target machine.\n    command - The command you want to execute. Special characters\: '<', '>', '(', ')', '&' need to be escaped using the caret ('^') character.  The only exception to this rule is when the '>' character is used to redirect output.\n    currentDirectory - The directory from which the command will be executed.\n    user - Username to use for remote WMI impersonation and thread impersonation on the RAS host for this operation (can be left blank).\n    password - Password of the user.\n    outputPath - Network accessible path used by the operation to store temporary files. If not specified it points to \\\\host\\admin$\\temp\\'. If this path is not accessible you should change it to use another share that the host local system account has write access to. By default the path will have to be changed on Windows 2000 systems.\n    characterSet - The character encoding used to write the batch file that will be remotely executed by the operation. Unicode character encodings may not be supported for this input (utf-8, utf-16, etc.).  Support for unicode encodings depends on target system capabilities.  By default this encoding will also be used to read the command output that is redirected to temporary files.  If the command output is expected to be of different encoding, specify the different encoding in the "outputCharacterSet" input.  \nDefault value\: The encoding of the operating system where is RAS installed.\nExamples\: ibm437, shift_jis\n    outputCharacterSet - The character encoding used to read the command output that was redirected to temporary files.  Only need to specify this input if the output of the command is known to be of a different character encoding.  As an example\: the "wmic" command returns utf-16 encoded output.\nExamples\: ibm437, shift_jis, utf-8, utf-16\n    timeout - The number of seconds before assuming the remote process is no longer functional. After the timeout has expired the remote process and all child processes will be terminated.\nDefault value\: 600\n    useDelegation - This input must be added by the user in order to be used. If set to "true" the operation will use the "Delegate" impersonation level and the "Kerberos" authentication protocol. If "false", empty or missing the operation will use "Impersonate" for the impersonation level and the default authentication protocol (which is NTLM).\nValues\: true, false\nDefault\: false\n    debugPath - This input must be added by the user in order to be used. If set to "true", an additional result field named "commandPassed" is returned and it contains the command that executes the script. For more information on the purpose of this input, see the "Notes" section.\n\nResults\:\n    returnResult - This is the primary output. It is the value from WMI for starting the process (not the exit value of the process).\n    processID - The process id of the remote process.\n    processReturnCode - The return code of the remote process.\n    stdOut - Standard output from the remote process.\n    stdErr - Standard error from the remote process.\n\nResponses\:\n    success - Remote process successfully launched and has completed executing.\n    failure - Unable to start remote process.\n\nNotes\: \n1. Internally this operation creates a temporary batch file with the following content\:\n\ncmd /c " [command] 2> err.tmp 1> out.tmp "\necho %ERRORLEVEL% > ret.tmp\n\nAfter the script is executed, the operation will read the files\: err.tmp (standard error), out.tmp (standard output) and ret.tmp (return code). Finally the operation deletes all the temporary files.\nThe command that executes the script can be accesed by adding a new input\: debugPath with the value\: "true"\n\n2. List of possible encoding names (Support for the encoding may depend on the version or language of the RAS OS)\:\nEncoding Name\:\tDescription\:\nIBM437\t\tOEM United States\nDOS-720\t\tArabic (DOS)\nibm737\t\tGreek (DOS)\nibm775\t\tBaltic (DOS)\nibm850\t\tWestern European (DOS)\nibm852\t\tCentral European (DOS)\nIBM855\t\tOEM Cyrillic\nibm857\t\tTurkish (DOS)\nIBM00858\t\tOEM Multilingual Latin I\nIBM860\t\tPortuguese (DOS)\nibm861\t\tIcelandic (DOS)\nDOS-862\t\tHebrew (DOS)\nIBM863\t\tFrench Canadian (DOS)\nIBM864\t\tArabic (864)\nIBM865\t\tNordic (DOS)\ncp866\t\tCyrillic (DOS)\nibm869\t\tGreek, Modern (DOS)\nshift_jis\t\tJapanese (Shift-JIS)\ngb2312\t\tChinese Simplified (GB2312)\nks_c_5601-1987\tKorean\nbig5\t\tChinese Traditional (Big5)\nutf-16\t\tUnicode\nunicodeFFFE\t\tUnicode (Big-Endian)\nutf-7\t\tUnicode (UTF-7)\nutf-8\t\tUnicode (UTF-8)\nutf-32\t\tUnicode (UTF-32)\nutf-32BE\t\tUnicode (UTF-32 Big-Endian)\nJohab\t\tKorean (Johab)\nus-ascii\t\tUS-ASCII\nkoi8-r\t\tCyrillic (KOI8-R)\neuc-jp\t\tJapanese (EUC)\nEUC-CN\t\tChinese Simplified (EUC)\neuc-kr\t\tKorean (EUC)\nhz-gb-2312\t\tChinese Simplified (HZ)\nGB18030\t\tChinese Simplified (GB18030)\n\n</pre>
+a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.eba7f108-0730-482b-8667-c244122cdb84.prompt=Alternate Credentials - UserName\:
+]]></descriptionCdata>
+  <annotation>a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.description</annotation>
+  <name>Windows Command</name>
+  <categories/>
+  <inputs>
+    <userInputBinding id="a669a593-eeae-4658-8042-54757e71d8c7">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>host</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.a669a593-eeae-4658-8042-54757e71d8c7.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="59d6a350-bd2b-4d59-b504-e811ad5dd169">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>command</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.59d6a350-bd2b-4d59-b504-e811ad5dd169.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="1087740f-42bb-4483-82d4-2d26a54d2fe8">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>currentDirectory</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.1087740f-42bb-4483-82d4-2d26a54d2fe8.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="eba7f108-0730-482b-8667-c244122cdb84">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>user</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.eba7f108-0730-482b-8667-c244122cdb84.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="7b42898b-d354-4e74-b245-9e39bca499b4">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>ENCRYPTED</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>password</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.7b42898b-d354-4e74-b245-9e39bca499b4.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="87e6c95e-62a4-4fb0-98d0-9de4ec6c4a5e">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>outputPath</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.87e6c95e-62a4-4fb0-98d0-9de4ec6c4a5e.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="1c3db733-2b91-4c09-a52c-298dc2d6effe">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>characterSet</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="b53b9245-e689-4e1f-ab82-f638123abf59">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>outputCharacterSet</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="390663c2-0888-4b2f-b91d-55cf18a271ee">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>timeout</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>a2e44e20-a7b5-4efd-ac82-5ec1c8335dc6.390663c2-0888-4b2f-b91d-55cf18a271ee.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+  </inputs>
+  <scriptlet id="08eeaec3-645a-4bd4-8155-11fce2074273">
+    <annotation></annotation>
+    <name>Operation Windows Command (632830d9-d5be-47b3-9768-efa99decb443)</name>
+    <script>sErr = scriptletRawResult[&quot;StdErr&quot;];
+sOut = scriptletRawResult[&quot;StdOut&quot;];
+
+if (sErr !== undefined &amp;&amp; sErr != null &amp;&amp; sErr.length &gt; 0)
+{
+   scriptletResult = sErr;
+   if (sErr != sOut)
+   {
+      scriptletResult = scriptletResult + sOut;
+   }
+}
+else
+{
+   scriptletResult = sOut;
+}</script>
+    <type>RHINO</type>
+  </scriptlet>
+  <possibleResponses>
+    <opResponse id="c2077645-db0b-47a0-9482-58d0b5fd399c">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules>
+        <expression id="9a1cd9ad-080e-4f74-a751-a7d6194143a1">
+          <annotation></annotation>
+          <name>returnCode</name>
+          <fieldName>returnCode</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <containsEvaluator id="8b50865e-7f50-424c-8070-3aa6cbd7724b">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>0</text>
+            <ignoreCase>true</ignoreCase>
+            <matchType>EXACT_MATCH</matchType>
+          </containsEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="d0038d6f-1746-452a-9f42-447bcf042734">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>ERROR</type>
+      <matchRules>
+        <expression id="38d0b5dd-fce1-406f-9945-1c00863990b6">
+          <annotation></annotation>
+          <name>returnCode</name>
+          <fieldName>returnCode</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <containsEvaluator id="102b578b-ba78-48d9-8b34-e3c90d531d19">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>1</text>
+            <ignoreCase>true</ignoreCase>
+            <matchType>EXACT_MATCH</matchType>
+          </containsEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="97cbcb1e-678d-4531-a5f6-72b94888883f">
+    <annotation></annotation>
+    <name>returnCode</name>
+    <fieldName>returnCode</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="9a6ffc5b-e3ca-4891-ab21-578fa313e1a3">
+    <baseIcon>workstation_network.png</baseIcon>
+    <basePath>/Others/</basePath>
+    <readOnly>false</readOnly>
+    <layers>
+      <iconSpec id="16b61bee-53bb-429b-aeaf-5b0852490d7e">
+        <baseIcon>remote.png</baseIcon>
+        <basePath>/Annotations/</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+    </layers>
+  </iconSpec>
+  <opRef>
+    <refId>632830d9-d5be-47b3-9768-efa99decb443</refId>
+  </opRef>
+  <fieldValues/>
+  <groupAliasRef>
+    <refId>5233030c-af46-432b-a682-b326ca6bf2ae</refId>
+    <refName>RAS_Operator_Path</refName>
+  </groupAliasRef>
+  <overrideGroupAlias>${overrideNRAS}</overrideGroupAlias>
+</operation>

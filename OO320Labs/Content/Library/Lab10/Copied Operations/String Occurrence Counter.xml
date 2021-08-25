@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation id="be9191e9-9320-41f1-8d6d-68e56accd45a">
+  <descriptionCdata><![CDATA[be9191e9-9320-41f1-8d6d-68e56accd45a.description=<pre>Counts the number of occurrences of one string within another\n\nInputs\:\ncontainer - The string that the occurrences should be counted in.\ntoFind - The string to find occurrences of.\nignoreCase - Boolean value for whether or not to ignore case during occurrence counting.\n\nResponses\:\nsuccess - The operation completed Successfully.\nfailure - Something went wrong.</pre>
+]]></descriptionCdata>
+  <annotation>be9191e9-9320-41f1-8d6d-68e56accd45a.description</annotation>
+  <name>String Occurrence Counter</name>
+  <categories/>
+  <inputs>
+    <userInputBinding id="7c44343b-9b8a-4a25-9f51-77af1dacd117">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>container</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="e52be57a-4061-4877-91c7-1c66c0d74c1e">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>toFind</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="61de6187-75bf-458a-bdc4-5ed228f29f60">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>ignoreCase</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="fa1c25f7-8994-4f73-a4ab-19547615db9e">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules>
+        <expression id="536cbb5d-62ba-49ae-b028-b7861bffb3ff">
+          <annotation></annotation>
+          <name>response</name>
+          <fieldName>response</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <compare id="cac5da96-aba7-41c8-acd5-f191a063a7de">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>success</text>
+            <matchType>=</matchType>
+          </compare>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="1e8d198e-0732-403d-875a-3adb2916cf40">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>true</isDefault>
+      <onFailure>true</onFailure>
+      <type>ERROR</type>
+      <matchRules>
+        <expression id="bdbb3eab-16e5-454b-af48-47efb934ec5e">
+          <annotation></annotation>
+          <name>response</name>
+          <fieldName>response</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <compare id="c5583682-df16-4e12-a0fd-259ba2991032">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>failure</text>
+            <matchType>=</matchType>
+          </compare>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="024fca70-4d75-47a3-be97-861bfc9c54ec">
+    <annotation></annotation>
+    <name>returnResult</name>
+    <fieldName>returnResult</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="2d475fa5-3d70-49af-b596-e7237bc6ed15">
+    <baseIcon>compare.png</baseIcon>
+    <basePath>Utilities</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <opRef>
+    <refId>48143411-bb62-4207-a3e0-838ec9f1d7c6</refId>
+  </opRef>
+  <fieldValues/>
+  <groupAliasRef>
+    <refId>5233030c-af46-432b-a682-b326ca6bf2ae</refId>
+    <refName>RAS_Operator_Path</refName>
+  </groupAliasRef>
+  <overrideGroupAlias>${overrideJRAS}</overrideGroupAlias>
+</operation>

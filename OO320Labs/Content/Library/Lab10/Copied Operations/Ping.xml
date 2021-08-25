@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation id="bccc0ee6-1db8-407e-8d94-65680631cd28">
+  <descriptionCdata><![CDATA[bccc0ee6-1db8-407e-8d94-65680631cd28.12b170e5-00af-4bc9-ab94-91600a80c669.prompt=Username\:
+bccc0ee6-1db8-407e-8d94-65680631cd28.1376b4dd-5d23-446e-9a48-25b47b91af35.prompt=Telnet password prompt\:
+bccc0ee6-1db8-407e-8d94-65680631cd28.1b9860c3-4e94-4f84-8e3c-6152dd56d96e.prompt=Target host name\:
+bccc0ee6-1db8-407e-8d94-65680631cd28.2bc60f57-7122-4dc1-9d64-d3b4d72b4258.prompt=Size of packet\:
+bccc0ee6-1db8-407e-8d94-65680631cd28.42520f53-1ab0-4a50-bd48-ae9155a24fe8.prompt=Password\:
+bccc0ee6-1db8-407e-8d94-65680631cd28.45423113-8feb-415e-a926-29cf9d823ce7.prompt=Key file\:
+bccc0ee6-1db8-407e-8d94-65680631cd28.68ec8da6-72fc-4972-a118-42a4a8f4e576.prompt=Host operating system\:
+bccc0ee6-1db8-407e-8d94-65680631cd28.6b4089a9-9a57-4b4c-84fb-a548aac02be5.prompt=Number of packets\:
+bccc0ee6-1db8-407e-8d94-65680631cd28.93cb11a9-1a46-4dfa-95c3-4c60c1aac063.prompt=Host name\:
+bccc0ee6-1db8-407e-8d94-65680631cd28.9c0a8233-860b-4c61-806b-662e85d6e5ec.prompt=Protocol\: 
+bccc0ee6-1db8-407e-8d94-65680631cd28.9c93b772-3dc3-49d2-84c7-a50b2f45e031.prompt=Telnet username prompt\:
+bccc0ee6-1db8-407e-8d94-65680631cd28.description=<pre>\nRuns a Ping command either locally or remotely depending on the specified protocol. Credentials and other inputs (remoteOS, hostname, username, password, keyFile etc) are required if the command must be run from a remote host. The Telnet protocol also requires inputs for usernamePrompt and passwordPrompt. \n\nInputs\:\n    hostname - Hostname or IP address of the host computer where the Ping command will be executed.\n    username - A username to authenticate to the host computer. \n    password - The password for the user account.\n    targetHost - Hostname or IP address of the target host computer.\n    protocol  - The protocol used to run the command.\nValues\: local, ssh, Telnet\n    packetSize - The size of the ping packet.\n    packetCount - The number of ping packets to send.\n    remoteOS - The operating system of the host computer (WINDOWS, LINUX, SOLARIS only are supported), if Ping is running on a remote host.\n    usernamePrompt - The username prompt seen while using Telnet protocol. This input is required when Telnet protocol is used. For example, login\:.\n    passwordPrompt - The password prompt seen while using Telnet protocol. This input is required when Telnet protocol is used. For example, password\:.\n    keyFile - The path to the private key file for remote host. The path should be absolute.\n    timeout - The timeout in miliseconds for the Ping operation. Default is 90000.-A inet6\n    ipVersion - IP version forced to the ping command executed on the target host. For Windows -4 or -6 parameters will be added.On Linux will be used ping or ping6. For Solaris -A inet or -A inet6 parameters will be added. For empty string the operation will decide what format to use if targetHost is an ip literal; if targetHost is given as a hostname default 'ping' command will be used on each operating system.\nValues\: 4, 6, '' (empty string without quotes).\nDefault\: '' (empty string without quotes).\n\nResponses\:\n    success - The command executed successfully.\n    failure - The command could not be executed or had a problem during execution.\n\nReturns\:\n    packetsSent - The number of packets sent.\n    packetsReceived - The number of packets received.\n    percentagePacketsLost - The percentage of packets lost.\n    transmissionTimeMin - Minimum time taken for transmitting the packet.\n    transmissionTimeMax - Maximum time taken for transmitting the packet.\n    transmissionTimeAvg - Average time taken for transmitting the packet.\n    returnResult - Raw output of the command.\n    returnCode - Return code of the executed command.\n    error - The STDERR of the command.\n</pre>
+]]></descriptionCdata>
+  <annotation>bccc0ee6-1db8-407e-8d94-65680631cd28.description</annotation>
+  <name>Ping</name>
+  <categories/>
+  <inputs>
+    <userInputBinding id="93cb11a9-1a46-4dfa-95c3-4c60c1aac063">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>hostname</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>bccc0ee6-1db8-407e-8d94-65680631cd28.93cb11a9-1a46-4dfa-95c3-4c60c1aac063.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="12b170e5-00af-4bc9-ab94-91600a80c669">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>username</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>bccc0ee6-1db8-407e-8d94-65680631cd28.12b170e5-00af-4bc9-ab94-91600a80c669.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="42520f53-1ab0-4a50-bd48-ae9155a24fe8">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>ENCRYPTED</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>password</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>bccc0ee6-1db8-407e-8d94-65680631cd28.42520f53-1ab0-4a50-bd48-ae9155a24fe8.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="1b9860c3-4e94-4f84-8e3c-6152dd56d96e">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>targetHost</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>bccc0ee6-1db8-407e-8d94-65680631cd28.1b9860c3-4e94-4f84-8e3c-6152dd56d96e.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="9c0a8233-860b-4c61-806b-662e85d6e5ec">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>protocol</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>bccc0ee6-1db8-407e-8d94-65680631cd28.9c0a8233-860b-4c61-806b-662e85d6e5ec.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <link>
+        <refId>6d065e03-2449-40fa-9a4b-a2f2a35a8d3d</refId>
+        <refName>Network - Protocols</refName>
+      </link>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="6b4089a9-9a57-4b4c-84fb-a548aac02be5">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>packetCount</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>bccc0ee6-1db8-407e-8d94-65680631cd28.6b4089a9-9a57-4b4c-84fb-a548aac02be5.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="2bc60f57-7122-4dc1-9d64-d3b4d72b4258">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>packetSize</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>bccc0ee6-1db8-407e-8d94-65680631cd28.2bc60f57-7122-4dc1-9d64-d3b4d72b4258.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="68ec8da6-72fc-4972-a118-42a4a8f4e576">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>remoteOS</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>bccc0ee6-1db8-407e-8d94-65680631cd28.68ec8da6-72fc-4972-a118-42a4a8f4e576.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="9c93b772-3dc3-49d2-84c7-a50b2f45e031">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>usernamePrompt</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>bccc0ee6-1db8-407e-8d94-65680631cd28.9c93b772-3dc3-49d2-84c7-a50b2f45e031.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="1376b4dd-5d23-446e-9a48-25b47b91af35">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>passwordPrompt</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>bccc0ee6-1db8-407e-8d94-65680631cd28.1376b4dd-5d23-446e-9a48-25b47b91af35.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="45423113-8feb-415e-a926-29cf9d823ce7">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>keyFile</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>bccc0ee6-1db8-407e-8d94-65680631cd28.45423113-8feb-415e-a926-29cf9d823ce7.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="cfc2d137-9e81-40af-802c-d7fa7040480d">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>timeout</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="fe561303-22e4-4580-8a50-0d4c7a69f74b">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>ipVersion</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <link>
+        <refId>4a48be50-00c6-45db-bae7-1bee0410305b</refId>
+        <refName>IP Version</refName>
+      </link>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="22451bd4-c8ab-4415-96ad-96e4b4cceb5d">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules>
+        <expression id="7d67498a-79db-4b4c-ac35-c5b9710c2689">
+          <annotation></annotation>
+          <name>returnCode</name>
+          <fieldName>returnCode</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <containsEvaluator id="8d6c8124-8933-4307-8a15-e4135ea84124">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>0</text>
+            <ignoreCase>true</ignoreCase>
+            <matchType>EXACT_MATCH</matchType>
+          </containsEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="cc018c7f-0de5-4a27-afa1-8435645300c7">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>ERROR</type>
+      <matchRules>
+        <expression id="bad0e8a2-7de8-4cc6-8dd5-92d29438f609">
+          <annotation></annotation>
+          <name>returnCode</name>
+          <fieldName>returnCode</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <containsEvaluator id="b177eb11-449f-47e4-a558-9e7a27499767">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>-1</text>
+            <ignoreCase>true</ignoreCase>
+            <matchType>EXACT_MATCH</matchType>
+          </containsEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="93eba82b-6633-4429-8b27-5b2968b9e2a8">
+    <annotation></annotation>
+    <name>returnCode</name>
+    <fieldName>returnResult</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="0f20fb0e-5c33-4eff-932f-061437b75dca">
+    <baseIcon>client_network.png</baseIcon>
+    <basePath>/Networking/</basePath>
+    <readOnly>false</readOnly>
+    <layers>
+      <iconSpec id="6b11ed17-d608-407e-95db-7fb845a796e6">
+        <baseIcon>remote.png</baseIcon>
+        <basePath>/Annotations/</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+    </layers>
+  </iconSpec>
+  <opRef>
+    <refId>56c181bc-a763-435c-9561-4ba29d045c86</refId>
+  </opRef>
+  <fieldValues/>
+  <groupAliasRef>
+    <refId>5233030c-af46-432b-a682-b326ca6bf2ae</refId>
+    <refName>RAS_Operator_Path</refName>
+  </groupAliasRef>
+  <overrideGroupAlias>${overrideJRAS}</overrideGroupAlias>
+</operation>

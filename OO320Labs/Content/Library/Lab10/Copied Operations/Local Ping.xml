@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation id="01c77da7-bb67-4013-a88e-8686e48fd945">
+  <descriptionCdata><![CDATA[01c77da7-bb67-4013-a88e-8686e48fd945.description=<pre>Runs the Ping command locally. \n\nInput Parameters\:\n    targetHost - The target host to ping\n    packetSize - The size of the ping packet\n    packetCount - The number of packets to send. \n    timeout - The timeout in miliseconds for the Local Ping operation. Default is 90000.\n    ipVersion - IP version forced to the ping command executed on the target host. For Windows -4 or -6 parameters will be added.On Linux will be used ping or ping6. For Solaris -A inet or -A inet6 parameters will be added. For empty string the operation will decide what format to use if targetHost is an ip literal; if targetHost is given as a hostname default 'ping' command will be used on each operating system.\nValues\: 4, 6, '' (empty string without quotes).\nDefault\: '' (empty string without quotes).\n\nResponses\:\n    success - The command was executed successfully\n    failure - The command could not be executed\n\nReturns\:\n    packetsSent - The number of packets sent\n    packetsReceived - The number of packets received\n    percentagePacketsLost - The percentage of packets lost\n    transmissionTimeMin - The minimum time taken for transmitting the packet\n    transmissionTimeMax - The maximum time taken for transmitting the packet\n    transmissionTimeAvg - The average time taken for transmitting the packet\n    returnResult - The raw output of the command\n    returnCode - The return code from the executed command\n    error - the STDERR of the command\n\nNotes\:\n    If ping does not receive any reply packets at all it will exit with code 1. If a packet count and deadline are both specified, and fewer than count packets are received by the time the deadline has arrived, it will also exit with code 1. On other error it exits with code 2. Otherwise it exits with code 0. This makes it possible to use the exit code to see if a host is alive or not. Since the result of the operation is determined from the exist code (anything other than code 0 is considered a failure), the operation's result can vary accordingly.\n</pre>
+]]></descriptionCdata>
+  <annotation>01c77da7-bb67-4013-a88e-8686e48fd945.description</annotation>
+  <name>Local Ping</name>
+  <categories/>
+  <inputs>
+    <userInputBinding id="0c1e6ab7-6f47-4097-87de-4defa25f3962">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>targetHost</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="57941845-d0c7-4928-a558-04e1fb4948dd">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>packetCount</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="4bc044fc-7604-46f6-901d-2010b927678b">
+      <annotation></annotation>
+      <toContextKey></toContextKey>
+      <fromContextKey></fromContextKey>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>packetSize</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="d1659ff4-ef1c-4666-865c-3fd013b2877e">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>timeout</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="39f29549-d021-4e76-b3a6-44bba02481ef">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>ipVersion</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <link>
+        <refId>4a48be50-00c6-45db-bae7-1bee0410305b</refId>
+        <refName>IP Version</refName>
+      </link>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="22c5bf59-6d63-4c85-b447-d53d66fb57d9">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules>
+        <expression id="16a0365c-0b3a-4aa8-a64f-6d9f75b426fe">
+          <annotation></annotation>
+          <name>returnCode</name>
+          <fieldName>returnCode</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <containsEvaluator id="3af3a65e-dd1e-41f6-b7e1-29c0d81f6cea">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>0</text>
+            <ignoreCase>true</ignoreCase>
+            <matchType>EXACT_MATCH</matchType>
+          </containsEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="5550005f-0b8c-4b87-acdc-89b93de45708">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>ERROR</type>
+      <matchRules>
+        <expression id="96feee9a-17e9-440e-aed5-0b0fa7b4b5a8">
+          <annotation></annotation>
+          <name>returnCode</name>
+          <fieldName>returnCode</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <containsEvaluator id="89f835d3-9349-424d-b67b-3e1c911d40fd">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>-1</text>
+            <ignoreCase>true</ignoreCase>
+            <matchType>EXACT_MATCH</matchType>
+          </containsEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="02d3da3d-6047-418a-b80a-7063c0247ca2">
+    <annotation></annotation>
+    <name>returnCode</name>
+    <fieldName>returnResult</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="26e05360-ed1d-44ba-81ce-7eab84b62466">
+    <baseIcon>client_network.png</baseIcon>
+    <basePath>/Networking/</basePath>
+    <readOnly>false</readOnly>
+    <layers>
+      <iconSpec id="37e41efc-4317-43c0-9d5d-0dea27dc011e">
+        <baseIcon>gear.png</baseIcon>
+        <basePath>/Annotations/</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+    </layers>
+  </iconSpec>
+  <opRef>
+    <refId>c460b8c8-e1f7-4321-a72c-6134da73811a</refId>
+  </opRef>
+  <fieldValues/>
+  <groupAliasRef>
+    <refId>5233030c-af46-432b-a682-b326ca6bf2ae</refId>
+    <refName>RAS_Operator_Path</refName>
+  </groupAliasRef>
+  <overrideGroupAlias>${overrideJRAS}</overrideGroupAlias>
+</operation>

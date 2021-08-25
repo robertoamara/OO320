@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation id="d6b6f248-0e42-460d-a719-09d13110774b">
+  <descriptionCdata><![CDATA[d6b6f248-0e42-460d-a719-09d13110774b.description=<pre> \nCheck to see if the value stored in a specified flow variable, denoted by key, is null.\n\nInputs\:\n    keyName - The key to check, i.e. the name of the flow variable. \n    trimSpaces - If set on "true" then all the whitespaces will be removed from the value stored. \nValid values\: true, false\nDefault value\: false\n\nReturns\: \n    The value in the specified key, i.e. flow variable with all whitespaces removed.\n\nResponses\:\n    isNull - If the key is a null pointer, i.e. the flow variable doesn't have an assigned value.\n    notNull - If some value is stored in the key, i.e the flow variable has a value assigned. \n\nNotes\: \n    1. If the "trimSpaces" input is set on "true" and the value from "keyName" contains only whitespaces then the response will be "isNull". \n    2. If the "trimSpaces" input is set on "false" and the value from "keyName" contains only whitespaces then the response will be "notNull". \n    3. If any other value than "true" or "false" is passed on "trimSpaces" input then the default value (false) will be used.\n</pre>
+]]></descriptionCdata>
+  <annotation>d6b6f248-0e42-460d-a719-09d13110774b.description</annotation>
+  <name>Check Null</name>
+  <categories/>
+  <inputs>
+    <userInputBinding id="0ccf6e95-b44c-448a-9de7-8eb2d3a809ef">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>keyName</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt></prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <staticBinding id="6bfd993d-9e24-4ce1-af69-afa8a7198fb4">
+      <annotation></annotation>
+      <assignFromContext>false</assignFromContext>
+      <assignToContext>false</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>false</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>trimSpaces</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <value>false</value>
+      <record>false</record>
+    </staticBinding>
+  </inputs>
+  <scriptlet id="7f0488cf-b879-4d3b-b8f2-0b4ae96e4f10">
+    <annotation></annotation>
+    <name>Operation Check Null (b9997f7f-d19c-4dc6-acc4-fa91a8644a38)</name>
+    <script>var variable = getValue(keyName);
+var trimSpaces = getBooleanValue(&quot;trimSpaces&quot;);
+
+if (trimSpaces &amp;&amp; (variable == null || trim(variable) == &quot;&quot;)) {
+    scriptletResponse = &quot;isNull&quot;;
+} else if (!trimSpaces &amp;&amp; variable == null) {
+    scriptletResponse = &quot;isNull&quot;;
+} else {
+    scriptletResponse = &quot;notNull&quot;;
+} 
+
+if (variable != null) {
+	scriptletResult = trim(variable); 
+} else {
+	scriptletResult = &quot;&quot;; 
+}
+
+// ---------- helper functions ----------
+function trim(value) {
+    var s = &quot;&quot; + value;
+    return s.replace(/^\s*|\s*$/g, &quot;&quot;); 
+}
+
+function getValue(inputName) {
+    var inputValue = scriptletContext.get(inputName);
+    if (inputValue != null &amp;&amp; inputValue.length() &gt; 0) {
+        return inputValue;
+    }
+    return null;
+}
+
+function getBooleanValue(inputName) {
+    var inputValue = scriptletContext.get(inputName);
+    if (inputValue != null &amp;&amp; inputValue.length() &gt; 0 &amp;&amp; inputValue.toLowerCase() == &quot;true&quot;) {
+        return true;
+    }
+    return false;
+}</script>
+    <type>RHINO</type>
+  </scriptlet>
+  <possibleResponses>
+    <opResponse id="5824c3a0-0728-46de-9113-85c80110630f">
+      <annotation></annotation>
+      <name>isNull</name>
+      <isDefault>true</isDefault>
+      <onFailure>true</onFailure>
+      <type>RESOLVED</type>
+      <matchRules/>
+    </opResponse>
+    <opResponse id="c24bc6a8-1a0b-4f75-beb3-b39d63a657de">
+      <annotation></annotation>
+      <name>notNull</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>NO_ACTION_TAKEN</type>
+      <matchRules/>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="431e0a72-d18f-479c-b6ea-8e963f22af7b">
+    <annotation></annotation>
+    <name>returnResult</name>
+    <fieldName>returnResult</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="7a2e0f64-e3c0-40f6-bebf-8fed5f3f14be">
+    <baseIcon>compare.png</baseIcon>
+    <basePath>Utilities/</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <opRef>
+    <refId>ddd79f22-8b1e-4605-88d5-d912bb2da2b9</refId>
+  </opRef>
+  <fieldValues/>
+  <groupAliasRef>
+    <refId>5233030c-af46-432b-a682-b326ca6bf2ae</refId>
+    <refName>RAS_Operator_Path</refName>
+  </groupAliasRef>
+  <overrideGroupAlias>${overrideJRAS}</overrideGroupAlias>
+</operation>

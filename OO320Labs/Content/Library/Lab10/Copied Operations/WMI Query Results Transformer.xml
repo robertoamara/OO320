@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation id="f543087e-ceeb-4cbd-8730-c8feae93898a">
+  <descriptionCdata><![CDATA[f543087e-ceeb-4cbd-8730-c8feae93898a.754fc5fe-bbaa-42ec-88ed-1cf63c2f5dd8.prompt=Input format\:
+f543087e-ceeb-4cbd-8730-c8feae93898a.7e6ccf1e-9e9c-46a6-8942-193118b5a1d2.prompt=Input XML\:
+f543087e-ceeb-4cbd-8730-c8feae93898a.description=<pre>\nConverts the XML from WMIQuery to another format.  \n\nNOTE\: currently text and csv\n\nInput Parameters\:\nxml - the xml to transform\nformat - (text, csv) the format to transform the xml too\n\nResponses\:\nsuccess - xml formatted properly\nfailure - unable to format xml\n</pre>
+]]></descriptionCdata>
+  <annotation>f543087e-ceeb-4cbd-8730-c8feae93898a.description</annotation>
+  <name>WMI Query Results Transformer</name>
+  <categories/>
+  <inputs>
+    <userInputBinding id="7e6ccf1e-9e9c-46a6-8942-193118b5a1d2">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>xml</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>f543087e-ceeb-4cbd-8730-c8feae93898a.7e6ccf1e-9e9c-46a6-8942-193118b5a1d2.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+    <userInputBinding id="754fc5fe-bbaa-42ec-88ed-1cf63c2f5dd8">
+      <annotation></annotation>
+      <assignFromContext>true</assignFromContext>
+      <assignToContext>true</assignToContext>
+      <inputType>STRING</inputType>
+      <isList>false</isList>
+      <required>true</required>
+      <isPersisted>true</isPersisted>
+      <inputSymbol>format</inputSymbol>
+      <listDelimiter>,</listDelimiter>
+      <record>false</record>
+      <prompt>f543087e-ceeb-4cbd-8730-c8feae93898a.754fc5fe-bbaa-42ec-88ed-1cf63c2f5dd8.prompt</prompt>
+      <isMultiSelect>false</isMultiSelect>
+      <link>
+        <refId>0ecd4f29-bc49-48b4-8733-9cf89fa475b9</refId>
+        <refName>WMI Query Format</refName>
+      </link>
+      <sourceDelimiter>|</sourceDelimiter>
+    </userInputBinding>
+  </inputs>
+  <possibleResponses>
+    <opResponse id="a124bc98-c2e0-4d0f-b354-5ba46df8815e">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>false</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules>
+        <expression id="515c815e-8b81-4c11-a5fd-29bb2190a444">
+          <annotation></annotation>
+          <name></name>
+          <fieldName>returnCode</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <containsEvaluator id="4180c021-4c1f-4fcb-a0d3-f402f2b42cb6">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>0</text>
+            <ignoreCase>true</ignoreCase>
+            <matchType>EXACT_MATCH</matchType>
+          </containsEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+    <opResponse id="39f1124d-4716-40a9-a7ed-bcc1b426010f">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>ERROR</type>
+      <matchRules>
+        <expression id="537bfa89-f395-4d58-ad54-6be90a03b19d">
+          <annotation></annotation>
+          <name></name>
+          <fieldName>returnCode</fieldName>
+          <sourceType>RAWRESULT</sourceType>
+          <containsEvaluator id="dce23641-6f91-47e8-bb6b-ff56d6d04af9">
+            <annotation></annotation>
+            <name>Config Item</name>
+            <text>1</text>
+            <ignoreCase>true</ignoreCase>
+            <matchType>EXACT_MATCH</matchType>
+          </containsEvaluator>
+          <filters/>
+        </expression>
+      </matchRules>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="1844bc4a-c712-4168-b138-a25d5f9cdcb7">
+    <annotation></annotation>
+    <name></name>
+    <fieldName>returnResult</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="4c52fafa-331d-491a-bdac-c1694f30e37a">
+    <baseIcon>windows_server.png</baseIcon>
+    <basePath>Servers/</basePath>
+    <readOnly>false</readOnly>
+    <layers>
+      <iconSpec id="eee9f1ac-26fa-4a80-ac4d-fbf4ca1593e5">
+        <baseIcon>wrench.png</baseIcon>
+        <basePath>Utilities/</basePath>
+        <readOnly>false</readOnly>
+        <layers/>
+      </iconSpec>
+    </layers>
+  </iconSpec>
+  <opRef>
+    <refId>dc6c2b59-7d9d-444e-a64e-01b0acfb969c</refId>
+  </opRef>
+  <fieldValues/>
+  <groupAliasRef>
+    <refId>5233030c-af46-432b-a682-b326ca6bf2ae</refId>
+    <refName>RAS_Operator_Path</refName>
+  </groupAliasRef>
+  <overrideGroupAlias>${overrideNRAS}</overrideGroupAlias>
+</operation>
